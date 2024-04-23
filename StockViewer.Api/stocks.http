@@ -1,0 +1,4 @@
+GET http://localhost:5085/stocks
+
+###
+GET http://localhost:5085/stocks/1
