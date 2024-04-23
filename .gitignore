@@ -1,4 +1,4 @@
 /GameStore.Api/bin
 /GameStore.Api/obj
 /.vscode
-GameStore.db
+SVDataBase.db
