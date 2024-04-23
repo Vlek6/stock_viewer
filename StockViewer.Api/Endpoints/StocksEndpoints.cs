@@ -25,7 +25,7 @@ public static class StocksEndpoints
             {
                 Stock? stock = await dbContext.Stocks.FindAsync(id);
 
-                return stock is null ? Results.NotFound() : Results.Ok(stock);
+                return stock is null ? Results.NotFound() : Results.Ok(stock.ToStockSummaryDto());
             })
             .WithName(GetStockEndpointName);
 

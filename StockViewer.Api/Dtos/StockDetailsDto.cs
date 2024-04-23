@@ -3,5 +3,6 @@
 public record class StockDetailsDto
 (
     int Id,
-    string StockName
+    string StockName,
+    int UserId
 );

@@ -8,7 +8,7 @@ POST http://localhost:5085/users
 Content-Type: application/json
 
 {
-    "login": "Neo",
+    "login": "Brunn",
     "password": "EscapeTheMatrix"
 }
 

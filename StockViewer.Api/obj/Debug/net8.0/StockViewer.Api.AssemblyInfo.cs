@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StockViewer.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee4324f3fc93b1e3c1fe26623c3b305d0eaf293d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c2b434e99f5bf072471dfe69f5d454fbfef0bb0f")]
 [assembly: System.Reflection.AssemblyProductAttribute("StockViewer.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StockViewer.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

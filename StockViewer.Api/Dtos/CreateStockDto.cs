@@ -2,5 +2,6 @@
 
 public record class CreateStockDto
 (
-    string StockName
+    string StockName,
+    int UserId
 );

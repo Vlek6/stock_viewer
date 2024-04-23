@@ -10,14 +10,16 @@ public static class StockMapping
     {
         return new Stock()
         {
-            StockName = stock.StockName
+            StockName = stock.StockName,
+            UserId = stock.UserId,
         };
     }
 
     public static StockSummaryDto ToStockSummaryDto(this Stock stock)
     {
         return new(
-            stock.StockName
+            stock.StockName,
+            stock.UserId
         );
     }
 
