@@ -1,6 +1,6 @@
-/GameStore.Api/bin
-/GameStore.Api/obj
 /.vscode
 SVDataBase.db
 /bin
 /obj
+/StockViewer.Api/obj
+/StockViewer.Api/bin
