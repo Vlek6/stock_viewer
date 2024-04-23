@@ -2,3 +2,5 @@
 /GameStore.Api/obj
 /.vscode
 SVDataBase.db
+/Frontend/StockViewer.Frontend/obj
+/Frontend/StockViewer.Frontend/bin

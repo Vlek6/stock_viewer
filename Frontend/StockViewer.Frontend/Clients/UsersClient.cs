@@ -4,7 +4,7 @@ namespace StockViewer.Frontend.Clients;
 public class UsersClient(HttpClient httpClient)
 {
     private readonly List<User> users= new List<User>();
-
+    public User currentUser { get; set; }
     public void AddUser(User user){
         users.Add(user);
     }

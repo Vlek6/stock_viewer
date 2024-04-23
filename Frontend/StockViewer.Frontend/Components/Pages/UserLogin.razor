@@ -46,6 +46,7 @@ else
     private void handleSubmit()
     {
         if(user is  not null && UsersClient.CheckUser(user)){
+        UsersClient.currentUser = user;
         NavigationManager.NavigateTo("/");
         }
         else

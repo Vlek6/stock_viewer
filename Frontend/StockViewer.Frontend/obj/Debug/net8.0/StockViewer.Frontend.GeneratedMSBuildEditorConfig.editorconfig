@@ -30,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/Components/NoUser.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Ob1VzZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/Components/Pages/EditGame.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0R2FtZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,6 +56,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/Components/WithUser.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9XaXRoVXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/Components/_Imports.razor]
