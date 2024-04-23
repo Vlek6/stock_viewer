@@ -1,4 +1,13 @@
 GET http://localhost:5085/users
 
 ###
-GET http://localhost:5085/users/1
+GET http://localhost:5085/users/4
+
+###
+POST http://localhost:5085/users
+Content-Type: application/json
+
+{
+    "login": "Neo",
+    "password": "EscapeTheMatrix"
+}
