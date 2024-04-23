@@ -10,7 +10,6 @@ public static class StockMapping
     {
         return new Stock()
         {
-            Id = stock.Id,
             StockName = stock.StockName
         };
     }

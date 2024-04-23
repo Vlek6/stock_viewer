@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using StockViewer.Api.Data;
 using StockViewer.Api.Entities;
@@ -27,10 +28,17 @@ public static class StocksEndpoints
             })
             .WithName(GetStockEndpointName);
 
+        // POST stocks/
+        group.MapPost("/", async (CreateStockDto newStock, StockViewerContext dbContext) =>
+        {
+            Stock stock = newStock.ToEntity();
 
+            dbContext.Add(stock);
+            await dbContext.SaveChangesAsync();
 
-
-
+            return Results.CreatedAtRoute(GetStockEndpointName, new { id = stock.Id }, stock.ToStockSummaryDto());
+        }
+        );
 
         return group;
     }

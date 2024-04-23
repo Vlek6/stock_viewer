@@ -2,3 +2,14 @@ GET http://localhost:5085/stocks
 
 ###
 GET http://localhost:5085/stocks/1
+
+###
+POST http://localhost:5085/stocks
+Content-Type: application/json
+
+{
+    "stockName": "MSFT"
+}
+
+###
+PUT 
