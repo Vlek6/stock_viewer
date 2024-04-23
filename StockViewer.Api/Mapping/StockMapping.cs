@@ -21,5 +21,12 @@ public static class StockMapping
         );
     }
 
-    // public static 
+    public static Stock ToEntity(this UpdateStockDto stock, int id)
+    {
+        return new Stock()
+        {
+            Id = id,
+            StockName = stock.StockName
+        };
+    }
 }

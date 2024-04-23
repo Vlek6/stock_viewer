@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using StockViewer.Api.Data;
+using StockViewer.Api.Dtos;
 using StockViewer.Api.Entities;
 
 namespace StockViewer.Api.Endpoints;
@@ -37,6 +38,24 @@ public static class StocksEndpoints
             await dbContext.SaveChangesAsync();
 
             return Results.CreatedAtRoute(GetStockEndpointName, new { id = stock.Id }, stock.ToStockSummaryDto());
+        }
+        );
+
+        // PUT stocks/{id}
+        group.MapPut("/{id}", async (int id, UpdateStockDto updatedStock, StockViewerContext dbContext) =>
+        {
+            var existingStock = await dbContext.Stocks.FindAsync(id);
+
+            if(existingStock is null)
+            {
+                return Results.NotFound();
+            }
+
+            dbContext.Entry(existingStock)
+                                    .CurrentValues
+                                    .SetValues(updatedStock.ToEntity(id));
+            await dbContext.SaveChangesAsync();
+            return Results.NoContent();
         }
         );
 
