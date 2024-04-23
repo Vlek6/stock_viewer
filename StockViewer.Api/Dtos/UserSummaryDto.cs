@@ -3,6 +3,5 @@
 public record class UserSummaryDto
 (
     int Id,
-    string Login,
-    string Password
+    string Login
 );

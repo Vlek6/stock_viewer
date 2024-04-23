@@ -12,7 +12,7 @@ public static class UsersEndpoints
 
         //GET /users
         group.MapGet("/", async (StockViewerContext dbContext) =>
-            await dbContext.Users.AsNoTracking().ToListAsync()
+            await dbContext.Users.Select(user => user.ToUserSummaryDto()).AsNoTracking().ToListAsync()
         );
 
         //GET /users/{id}
@@ -20,7 +20,7 @@ public static class UsersEndpoints
         {
             User? user = await dbContext.Users.FindAsync(id);
 
-            return user is null ? Results.NotFound() : Results.Ok(user);
+            return user is null ? Results.NotFound() : Results.Ok(user.ToUserSummaryDto());
         });
 
 
