@@ -21,4 +21,14 @@ public static class UserMapping
             user.Login
         );
     }
+
+    public static User ToEntity(this UpdateUserDto user, int id)
+    {
+        return new User()
+        {
+            Id = id,
+            Login = user.Login,
+            Password = user.Password
+        };
+    }
 }

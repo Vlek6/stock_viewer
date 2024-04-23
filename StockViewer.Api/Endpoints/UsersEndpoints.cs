@@ -37,7 +37,37 @@ public static class UsersEndpoints
 
             return Results.CreatedAtRoute(GetUserEndpointName, new {id = user.Id}, user.ToUserSummaryDto());
         });
+
+        // PUT /users/{id}
+        group.MapPut("/{id}", async (int id, UpdateUserDto updatedUser, StockViewerContext dbContext) =>
+        {
+            var existingUser = await dbContext.Users.FindAsync(id);
+
+            if(existingUser is null)
+            {
+                return Results.NotFound();
+            }
+
+            dbContext.Entry(existingUser)
+                                .CurrentValues
+                                .SetValues(updatedUser.ToEntity(id));
+            await dbContext.SaveChangesAsync();
+            return Results.NoContent();
+        });
+
+        // DELETE /users/{id}
+        group.MapDelete("/{id}", async (int id, StockViewerContext dbContext) =>
+        {
+            await dbContext.Users
+                            .Where(user => user.Id == id)
+                            .ExecuteDeleteAsync();
+
+            return Results.NoContent();
+        });
+
         return group;
+
+        
     }
 
     
