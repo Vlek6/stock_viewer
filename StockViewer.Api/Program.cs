@@ -1,4 +1,6 @@
+using StockViewer.Api;
 using StockViewer.Api.Data;
+using StockViewer.Api.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +9,7 @@ builder.Services.AddSqlite<StockViewerContext>(connString);
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+app.MapUsersEndpoints();
 
 await app.MigrateDbAsync();
 

@@ -1,5 +1,6 @@
 ﻿// using directive to include the EntityFrameworkCore namespace, allowing us to use its features
 using Microsoft.EntityFrameworkCore;
+using StockViewer.Api.Entities;
 
 // Define the namespace for the data layer of the StockViewer API
 namespace StockViewer.Api.Data;

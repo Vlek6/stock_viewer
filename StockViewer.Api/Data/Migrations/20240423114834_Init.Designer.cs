@@ -10,8 +10,8 @@ using StockViewer.Api.Data;
 namespace StockViewer.Api.Data.Migrations
 {
     [DbContext(typeof(StockViewerContext))]
-    [Migration("20240423091113_AddStockUserTables")]
-    partial class AddStockUserTables
+    [Migration("20240423114834_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,7 +19,7 @@ namespace StockViewer.Api.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.4");
 
-            modelBuilder.Entity("StockViewer.Api.Stock", b =>
+            modelBuilder.Entity("StockViewer.Api.Entities.Stock", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -34,7 +34,7 @@ namespace StockViewer.Api.Data.Migrations
                     b.ToTable("Stocks");
                 });
 
-            modelBuilder.Entity("StockViewer.Api.User", b =>
+            modelBuilder.Entity("StockViewer.Api.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
