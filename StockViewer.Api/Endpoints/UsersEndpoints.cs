@@ -15,13 +15,21 @@ public static class UsersEndpoints
 
         //GET /users
         group.MapGet("/", async (StockViewerContext dbContext) =>
-            await dbContext.Users.Select(user => user.ToUserSummaryDto()).AsNoTracking().ToListAsync()
+            await dbContext.Users
+                                .Include(user => user.Stocks)
+                                .Select(user => user.ToUserSummaryDto())
+                                .AsNoTracking()
+                                .ToListAsync()
         );
 
         //GET /users/{id}
         group.MapGet("/{id}", async (int id, StockViewerContext dbContext) =>
         {
-            User? user = await dbContext.Users.FindAsync(id);
+            User? user = await dbContext.Users
+                                            .Include(user => user.Stocks)
+                                            .Where(user => user.Id == id)
+                                            .AsNoTracking()
+                                            .FirstOrDefaultAsync();
 
             return user is null ? Results.NotFound() : Results.Ok(user.ToUserSummaryDto());
         })

@@ -18,8 +18,8 @@ public static class StockMapping
     public static StockSummaryDto ToStockSummaryDto(this Stock stock)
     {
         return new(
-            stock.StockName,
-            stock.UserId
+            stock.Id,
+            stock.StockName
         );
     }
 

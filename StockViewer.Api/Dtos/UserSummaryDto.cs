@@ -3,5 +3,6 @@
 public record class UserSummaryDto
 (
     int Id,
-    string Login
+    string Login,
+    List<StockSummaryDto> Stocks
 );

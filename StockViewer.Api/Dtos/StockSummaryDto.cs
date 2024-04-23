@@ -2,6 +2,6 @@
 
 public record class StockSummaryDto
 (
-    string StockName,
-    int UserId
+    int Id,
+    string StockName
 );

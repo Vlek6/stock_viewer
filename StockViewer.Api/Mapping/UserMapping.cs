@@ -16,9 +16,11 @@ public static class UserMapping
 
     public static UserSummaryDto ToUserSummaryDto(this User user)
     {
+        var stocks = user.Stocks.Select(s => new StockSummaryDto(s.Id, s.StockName)).ToList();
         return new(
             user.Id,
-            user.Login
+            user.Login,
+            stocks
         );
     }
 
