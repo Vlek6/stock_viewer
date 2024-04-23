@@ -1,0 +1,58 @@
+﻿@page "/register"
+@rendermode InteractiveServer
+
+@inject NavigationManager NavigationManager
+@inject UsersClient UsersClient
+
+<PageTitle>Register Account</PageTitle>
+<h3>Register Account</h3>
+
+
+@if (user is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@user" FormName="registerUser" OnValidSubmit="handleSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="mb-3">
+                <label for="Name" class="form-label">User name (login):</label>
+                <InputText id="Name" placeholder="Type username here" @bind-Value="user.Username"
+                    class="form-control" />
+                <ValidationMessage For="()=>user.Username" />
+            </div>
+            <div class="mb-3">
+                <label for="Passoword" class="form-label">Passoword:</label>
+                <InputText id="Password" type="password" placeholder="Password" @bind-Value="user.Password"
+                    class="form-control" />
+                <ValidationMessage For="()=>user.Password" />
+            </div>
+            <button type="submit" class="btn btn-primary">Create account</button>
+            <a role="button" class="btn btn-secondary" href="/login">Back to login -> </a>
+
+        </EditForm>
+    </div>
+</div>
+}
+
+@code {
+    [SupplyParameterFromForm]
+    private User? user { get; set; }
+    private void handleSubmit()
+    {
+        if(user is  not null){
+        UsersClient.AddUser(user);
+        NavigationManager.NavigateTo("/");
+        }
+        else
+        NavigationManager.NavigateTo("/register");
+    }
+    protected override void OnParametersSet()
+    {
+        user = new();
+    }
+}
