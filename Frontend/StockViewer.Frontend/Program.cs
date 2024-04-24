@@ -10,17 +10,18 @@ var stockApiUrl = builder.Configuration["stockApiUrl"]??
 var ApiKey = builder.Configuration["APIkey"];
 
 // builder.Services.AddHttpClient<GamesClient>(client);
-builder.Services.AddHttpClient<GenresClient>(client => {
-        client.BaseAddress = new Uri(stockApiUrl); 
-        client.DefaultRequestHeaders.Add("api-key", ApiKey);
-        }
-    );
+// builder.Services.AddHttpClient<GenresClient>(client => {
+//         client.BaseAddress = new Uri(stockApiUrl); 
+//         client.DefaultRequestHeaders.Add("api-key", ApiKey);
+//         }
+//     );
 builder.Services.AddHttpClient<StockClient>(client => {
         client.BaseAddress = new Uri(stockApiUrl); 
         client.DefaultRequestHeaders.Add("api-key", ApiKey);
         }
     );
 builder.Services.AddSingleton<UsersClient>();
+builder.Services.AddSingleton<GamesClient>();
 
 
 var app = builder.Build();

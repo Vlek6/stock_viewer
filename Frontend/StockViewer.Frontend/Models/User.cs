@@ -7,11 +7,11 @@ public class User
         Password = "";
         FollowedStocks = new List<string>();
         // PurchasedStocks = new List<PurchasedStock>();
-        balance = 500;
+        // balance = 500;
     }
     public string? Username {get; set; }
     public string? Password {get; set;}
-    private decimal balance {get; set;}
+    // private decimal balance {get; set;}
     private List<string> FollowedStocks {get; set;}
     // private List<PurchasedStock> PurchasedStocks {get; set;}
 
