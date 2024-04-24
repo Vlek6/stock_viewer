@@ -6,14 +6,14 @@ public class User
         Username = "";
         Password = "";
         FollowedStocks = new List<string>();
-        PurchasedStocks = new List<PurchasedStock>();
+        // PurchasedStocks = new List<PurchasedStock>();
         balance = 500;
     }
     public string? Username {get; set; }
     public string? Password {get; set;}
     private decimal balance {get; set;}
     private List<string> FollowedStocks {get; set;}
-    private List<PurchasedStock> PurchasedStocks {get; set;}
+    // private List<PurchasedStock> PurchasedStocks {get; set;}
 
 
     public void SetUsername(string? username){
@@ -22,15 +22,15 @@ public class User
     public void SetPassword(string? password){
         Password = password;
     }
-    public void AddPurchasedStock(PurchasedStock Stock){
-        PurchasedStocks.Add(Stock);
-    }
+    // public void AddPurchasedStock(PurchasedStock Stock){
+    //     PurchasedStocks.Add(Stock);
+    // }
     public void AddFollowedStock(string StockName){
         FollowedStocks.Add(StockName);
     }
-    public List<PurchasedStock> GetPurchasedStocks(){
-        return PurchasedStocks;
-    }
+    // public List<PurchasedStock> GetPurchasedStocks(){
+    //     return PurchasedStocks;
+    // }
     public string? GetUsername(){
         return Username;
     }

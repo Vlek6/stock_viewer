@@ -1,0 +1,71 @@
+﻿@page "/chart"
+@page "/chart/{symbol}"
+@using System.Text.Json.Serialization
+@inject StockClient StockClient
+@rendermode InteractiveServer
+
+<PageTitle>Stock Chart</PageTitle>
+@if (stockData!.Count() == 0)
+{
+    <p><em> LOADING... </em></p>
+}
+else
+{
+
+    <ApexChart TItem="StockChartData" XAxisType="XAxisType.Datetime" Title="@rawData!.symbol" Height="500" Width="1000">
+
+    <ApexCandleSeries TItem="StockChartData" Items="stockData" Name="Apex Stock Price" XValue="@(e => e.date)"
+        Open="@(e => e.open)" High="@(e => e.high)" Low="@(e => e.low)" Close="@(e => e.close)"
+        OrderByDescending="e=> e.X" Stroke="@(new SeriesStroke{ Width=1 })" />
+
+
+</ApexChart>
+}
+
+@code {
+    [Parameter]
+    public string? symbol {get; set;}
+    List<StockChartData>? stockData;
+    StockStringDate item = new();
+    StockData? rawData { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        StockClient.symbol = symbol;
+        stockData = new List<StockChartData>();
+        rawData = await StockClient.GetStockDataAsync();
+        if (rawData.historical is not null && rawData.historical.Count() > 0)
+        {
+            foreach (JsonNode? tmp in rawData.historical)
+            {
+                if (tmp is not null)
+                    item = JsonConvert.DeserializeObject<StockStringDate>(tmp.ToJsonString())!;
+                stockData.Add(new StockChartData()
+                    {
+                        date = DateTime.ParseExact(item.date!, "yyyy-MM-dd", null).ToUnixTimeMilliseconds(),
+                        open = item.open,
+                        close = item.close,
+                        high = item.high,
+                        low = item.low
+                    });
+            }
+
+        }
+    }
+    class StockStringDate
+    {
+        public string? date { get; set; }
+        public decimal open { get; set; }
+        public decimal high { get; set; }
+        public decimal low { get; set; }
+        public decimal close { get; set; }
+        public decimal volume { get; set; }
+        public decimal unadjustedVolume { get; set; }
+        public decimal change { get; set; }
+        public decimal changePercent { get; set; }
+        public decimal vwap { get; set; }
+        public string? label { get; set; }
+        public decimal changeOverTime { get; set; }
+
+    }
+
+}

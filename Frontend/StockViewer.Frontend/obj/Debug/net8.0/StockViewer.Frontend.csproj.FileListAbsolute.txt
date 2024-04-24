@@ -27,3 +27,14 @@
 /Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/obj/Debug/net8.0/StockViewer.Frontend.pdb
 /Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/obj/Debug/net8.0/StockViewer.Frontend.genruntimeconfig.cache
 /Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/obj/Debug/net8.0/ref/StockViewer.Frontend.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Blazor-ApexCharts.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Microsoft.AspNetCore.Authorization.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Microsoft.AspNetCore.Components.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Microsoft.AspNetCore.Components.Forms.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Microsoft.AspNetCore.Components.Web.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Microsoft.AspNetCore.Metadata.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Microsoft.JSInterop.dll
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/obj/Debug/net8.0/StockViewer.Frontend.csproj.AssemblyReference.cache
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/obj/Debug/net8.0/StockVie.C0D47016.Up2Date
+/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/bin/Debug/net8.0/Newtonsoft.Json.dll

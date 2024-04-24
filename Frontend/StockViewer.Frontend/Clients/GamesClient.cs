@@ -14,7 +14,7 @@ public class GamesClient(HttpClient httpClient)
             Price = 19.99M,
             ReleaseDate = new DateOnly(1992, 7, 15)
         },
-        new(){
+        new(){  
             Id=2,
             Name = "League of Legends",
             Genre = "MOBA",
@@ -28,7 +28,7 @@ public class GamesClient(HttpClient httpClient)
             Price = 30.99M,
             ReleaseDate = new DateOnly(2004, 6, 15)
         }
-];
+    ];
 
     private readonly Genre[] genres = new GenresClient(httpClient).GetGenres();
     public GameSummary[] GetGames() => [.. games];
@@ -62,18 +62,20 @@ public class GamesClient(HttpClient httpClient)
 
     }
 
-    public void UpdateGame(GameDetails updatedGame){
+    public void UpdateGame(GameDetails updatedGame)
+    {
         var genre = GetGenreById(updatedGame.GenreId);
         GameSummary existingGame = GetGameSummaryById(updatedGame.Id);
-        
+
         existingGame.Name = updatedGame.Name;
         existingGame.Price = updatedGame.Price;
-        existingGame.ReleaseDate = updatedGame.ReleaseDate; 
+        existingGame.ReleaseDate = updatedGame.ReleaseDate;
         existingGame.Genre = genre.Name;
 
     }
 
-    public void DeleteGameById(int Id){
+    public void DeleteGameById(int Id)
+    {
         var game = GetGameSummaryById(Id);
         games.Remove(game);
     }

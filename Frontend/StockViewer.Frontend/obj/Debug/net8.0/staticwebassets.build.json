@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "osY0mNMVuF5agrzA2iWSNQkewJAjquWydfauoT+iy9c=",
+  "Hash": "EyNrJXOHelpyW8kQdPu5qvI6nZUejl2yPUeMl564lsM=",
   "Source": "StockViewer.Frontend",
   "BasePath": "_content/StockViewer.Frontend",
   "Mode": "Default",
@@ -16,6 +16,63 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/css/apexcharts.css",
+      "SourceId": "Blazor-ApexCharts",
+      "SourceType": "Package",
+      "ContentRoot": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/",
+      "BasePath": "_content/Blazor-ApexCharts",
+      "RelativePath": "css/apexcharts.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/css/apexcharts.css"
+    },
+    {
+      "Identity": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/js/apexcharts.esm.js",
+      "SourceId": "Blazor-ApexCharts",
+      "SourceType": "Package",
+      "ContentRoot": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/",
+      "BasePath": "_content/Blazor-ApexCharts",
+      "RelativePath": "js/apexcharts.esm.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/js/apexcharts.esm.js"
+    },
+    {
+      "Identity": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/js/blazor-apexcharts.js",
+      "SourceId": "Blazor-ApexCharts",
+      "SourceType": "Package",
+      "ContentRoot": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/",
+      "BasePath": "_content/Blazor-ApexCharts",
+      "RelativePath": "js/blazor-apexcharts.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/piotrek/.nuget/packages/blazor-apexcharts/3.2.0/staticwebassets/js/blazor-apexcharts.js"
+    },
     {
       "Identity": "/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/obj/Debug/net8.0/scopedcss/bundle/StockViewer.Frontend.styles.css",
       "SourceId": "StockViewer.Frontend",
@@ -72,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/app.css"
+    },
+    {
+      "Identity": "/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/wwwroot/exchange_symbols.json",
+      "SourceId": "StockViewer.Frontend",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/wwwroot/",
+      "BasePath": "_content/StockViewer.Frontend",
+      "RelativePath": "exchange_symbols.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/exchange_symbols.json"
     }
   ]
 }

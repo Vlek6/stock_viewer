@@ -34,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Ob1VzZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/Components/Pages/ChartView.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9DaGFydFZpZXcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/Components/Pages/EditGame.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FZGl0R2FtZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets/app.css"
     },
     {
+      "Id": "/Users/piotrek/Documents/stock_viewer/Frontend/StockViewer.Frontend/wwwroot/exchange_symbols.json",
+      "PackagePath": "staticwebassets/exchange_symbols.json"
+    },
+    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.StockViewer.Frontend.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
