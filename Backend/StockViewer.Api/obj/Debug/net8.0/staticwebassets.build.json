@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "C4Q2BNAQLA1+HBCzHCbzapu9jp2EM1SdqELpwe1jdYY=",
+  "Source": "StockViewer.Api",
+  "BasePath": "_content/StockViewer.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
