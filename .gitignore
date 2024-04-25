@@ -2,5 +2,5 @@
 SVDataBase.db
 /bin
 /obj
-/StockViewer.Api/obj
-/StockViewer.Api/bin
+StockViewer.Api/obj
+StockViewer.Api/bin
