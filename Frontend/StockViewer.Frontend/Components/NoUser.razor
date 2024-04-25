@@ -1,5 +1,7 @@
-﻿@* @inject GamesClient Client *@
+﻿@inject StockClient Client
 @inject StockClient StockClient
+@rendermode InteractiveServer
+
 
 @inject NavigationManager NavigationManager
 <style>
@@ -27,28 +29,29 @@
         background-color: #ddd;
     }
 </style>
-@if(name is not null){
-<h1 class="d-flex justify-content-center mt-3">Search for stock</h1>
-<EditForm Model="@name" FormName="StockSearch" OnSubmit="handeSubmit">
-    <div class="d-flex justify-content-center mt-5">
-        <div class="col-md-7">
-            @* <form method="post"> *@
-            <label for="Name" class="form-label"></label>
+@if (name is not null)
+{
+    <h1 class="d-flex justify-content-center mt-3">Search for stock</h1>
+    <EditForm Model="@name" FormName="StockSearch" OnSubmit="handeSubmit">
+        <div class="d-flex justify-content-center mt-5">
+            <div class="col-md-7">
+                @* <form method="post"> *@
+                <label for="Name" class="form-label"></label>
                 <InputText id="Name" placeholder="Type here" @bind-Value="name" class="form-control" />
-            <div id="searchSuggestions">
-                <ul id="suggestionList"></ul>
+                <div id="searchSuggestions">
+                    <ul id="suggestionList"></ul>
+                </div>
+                @* </form> *@
             </div>
-            @* </form> *@
-        </div>
             <button type="submit" class="btn btn-primary">Search for Stock</button>
+        </div>
+    </EditForm>
+    <div class="d-flex justify-content-center">
+        <div class="mt-5">
+            <a>You are not logged in. To fully use our potential you have to be logged in. You can do it here -> </a>
+            <a href="/login">Log In</a>
+        </div>
     </div>
-</EditForm>
-<div class="d-flex justify-content-center">
-    <div class="mt-5">
-        <a>You are not logged in. To fully use our potential you have to be logged in. You can do it here -> </a>
-        <a href="/login">Log In</a>
-    </div>
-</div>
 }
 <script>
     // Function to handle input change
@@ -76,7 +79,7 @@
                 // Ensure item.name and item.symbol are not null or undefined before lowercasing
                 const nameMatches = (item.name && item.name.toLowerCase().includes(inputText)) || false;
                 const symbolMatches = (item.symbol && item.symbol.toLowerCase().includes(inputText)) || false;
-                return symbolMatches||nameMatches ;
+                return symbolMatches || nameMatches;
             });
 
             displaySuggestions(filteredData);
@@ -122,11 +125,16 @@
     [SupplyParameterFromForm]
     private string? name { get; set; } = string.Empty;
     @* private GameSummary[]? games; *@
+    private StockSummary[]? stocks;
 
     protected override void OnInitialized()
     {
         @* games = Client.GetGames(); *@
+        stocks = Client.GetStocks();
     }
+
+
+
     private static string GameUrl(int Id) => $"/editGame/{Id}";
     private void handeSubmit()
     {
@@ -135,12 +143,12 @@
         NavigationManager.NavigateTo($"/chart/{name}");
     }
     @* protected override void OnParametersSet()
-    {
-        name = new();
-    } *@
+{
+name = new();
+} *@
 
-    private string GetDeleteModalId(GameSummary Game)
+    private string GetDeleteModalId(StockSummary Stock)
     {
-        return $"#{DeleteGame.GetModalId(Game)}";
+        return $"#{DeleteStock.GetModalId(Stock)}";
     }
 }
