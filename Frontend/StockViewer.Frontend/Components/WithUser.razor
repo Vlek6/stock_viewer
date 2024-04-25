@@ -67,7 +67,7 @@
                 <td>@stock.Name</td>
                 <td>
                     <div class="d-flex">
-                        <a class="btn btn-primary me-2" role="button" href="@GameUrl(stock.Id)">
+                        <a class="btn btn-primary me-2" role="button" href="@StockUrl(stock.Symbol)">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@GetDeleteModalId(stock)">
@@ -164,7 +164,7 @@
         @* NavigationManager.NavigateTo("/login"); *@
         stocks = Client.GetStocks();
     }
-    private static string GameUrl(int Id) => $"/editGame/{Id}";
+    private static string StockUrl(string Symbol) => $"/chart/{Symbol}";
 
     private void handeSubmit()
     {
