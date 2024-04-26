@@ -2633,11 +2633,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\polis\\Documents\\GitHub\\stock_viewer\\StockViewer.Api\\StockViewer.Api.csproj",
+      "projectUniqueName": "C:\\Users\\polis\\Documents\\GitHub\\stock_viewer\\Backend\\StockViewer.Api\\StockViewer.Api.csproj",
       "projectName": "StockViewer.Api",
-      "projectPath": "C:\\Users\\polis\\Documents\\GitHub\\stock_viewer\\StockViewer.Api\\StockViewer.Api.csproj",
+      "projectPath": "C:\\Users\\polis\\Documents\\GitHub\\stock_viewer\\Backend\\StockViewer.Api\\StockViewer.Api.csproj",
       "packagesPath": "C:\\Users\\polis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\polis\\Documents\\GitHub\\stock_viewer\\StockViewer.Api\\obj\\",
+      "outputPath": "C:\\Users\\polis\\Documents\\GitHub\\stock_viewer\\Backend\\StockViewer.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "R:\\ProgramFilesR\\Microsoft Visual dodatkowe\\NuGetPackages"

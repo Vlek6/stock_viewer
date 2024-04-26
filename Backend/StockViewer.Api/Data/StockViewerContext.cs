@@ -7,15 +7,13 @@ namespace StockViewer.Api.Data;
 
 
 
-/// <summary>
-/// Represents the database context for the StockViewer API.
-/// </summary>
-public class StockViewerContext(DbContextOptions<StockViewerContext> options) : DbContext(options)
-{
     /// <summary>
     /// Initializes a new instance of the <see cref="StockViewerContext"/> class.
     /// </summary>
     /// <param name="options">The options to be used by the context.</param>
+public class StockViewerContext(DbContextOptions<StockViewerContext> options) : DbContext(options)
+{
+
     public DbSet<User> Users => Set<User>();
 
     /// <summary>

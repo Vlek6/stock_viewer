@@ -7,13 +7,7 @@ namespace StockViewer.Api.Dtos;
 /// </summary>
 public record class CreateUserDto
 (
-    /// <summary>
-    /// Gets or sets the login of the user.
-    /// </summary>
     string Login,
 
-    /// <summary>
-    /// Gets or sets the password of the user.
-    /// </summary>
     string Password
 );
