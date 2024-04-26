@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X9GIDmm+ZVfuspSwf2cmsVtBa1fcWXqaEeHPz2UyWn/Cvb7Of8Pe2tFkV5k/vhawbW3fnZkxlHDBQPJWxsez1g==",
+  "dgSpecHash": "n1uJVwhe/iocGmqsezu/uNjf8SM4d3jWRSMR3+GYuhB9UayRJhc44r05qx7JN+CZFLQr7xxLauoWhfQlc+dsGw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\polis\\Documents\\GitHub\\stock_viewer\\StockViewer.Api\\StockViewer.Api.csproj",
+  "projectFilePath": "C:\\Users\\polis\\Documents\\GitHub\\stock_viewer\\Backend\\StockViewer.Api\\StockViewer.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\polis\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\polis\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

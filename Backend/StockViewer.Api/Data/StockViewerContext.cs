@@ -5,12 +5,22 @@ using StockViewer.Api.Entities;
 // Define the namespace for the data layer of the StockViewer API
 namespace StockViewer.Api.Data;
 
-// Define the StockViewerContext class that inherits from DbContext, the base class for interacting with a database using Entity Framework
+
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="StockViewerContext"/> class.
+    /// </summary>
+    /// <param name="options">The options to be used by the context.</param>
 public class StockViewerContext(DbContextOptions<StockViewerContext> options) : DbContext(options)
 {
-    // Property to access and manage user entities in the database. This uses the DbSet<User> type suitable for CRUD operations.
+
     public DbSet<User> Users => Set<User>();
 
-    // Property to access and manage stock entities in the database. Similar to Users, this DbSet<Stock> allows CRUD operations on the Stock entity.
+    /// <summary>
+    /// Provides access to manage Stock entities in the database.
+    /// </summary>
+    /// <remarks>
+    /// This property allows CRUD (Create, Read, Update, Delete) operations on Stock entities.
+    /// </remarks>
     public DbSet<Stock> Stocks => Set<Stock>();
 }

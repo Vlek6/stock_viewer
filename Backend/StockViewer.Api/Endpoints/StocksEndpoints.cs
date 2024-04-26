@@ -7,9 +7,17 @@ using StockViewer.Api.Entities;
 
 namespace StockViewer.Api.Endpoints;
 
+/// <summary>
+/// Provides endpoints for managing stocks.
+/// </summary>
 public static class StocksEndpoints
 {
     const string GetStockEndpointName = "GetStock";
+    /// <summary>
+    /// Maps endpoints related to stocks.
+    /// </summary>
+    /// <param name="app">The web application instance.</param>
+    /// <returns>A route group builder for stocks endpoints.</returns>
     public static RouteGroupBuilder MapStocksEndpoints(this WebApplication app)
     {
         var group = app.MapGroup("stocks").WithParameterValidation();
@@ -46,7 +54,7 @@ public static class StocksEndpoints
         {
             var existingStock = await dbContext.Stocks.FindAsync(id);
 
-            if(existingStock is null)
+            if (existingStock is null)
             {
                 return Results.NotFound();
             }
