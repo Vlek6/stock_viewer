@@ -1,6 +1,8 @@
 ﻿namespace StockViewer.Api.Dtos;
 
-public record class StockDetailsDto
+    /// <summary>
+    /// Represents the data transfer object (DTO) for displaying stock details.
+    /// </summary>public record class StockDetailsDto
 (
     int Id,
     string StockName,

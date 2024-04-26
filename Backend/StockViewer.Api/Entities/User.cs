@@ -1,5 +1,8 @@
 ﻿namespace StockViewer.Api.Entities;
 
+/// <summary>
+/// Represents a user entity in the StockViewer API.
+/// </summary>
 public class User
 {
     public int Id { get; set; }

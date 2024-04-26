@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StockViewer.Frontend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<<< HEAD:Frontend/StockViewer.Frontend/obj/Debug/net8.0/DOTNET_TUT.Frontend.AssemblyInfo.cs
+<<<<<<<< HEAD:Frontend / StockViewer.Frontend / obj / Debug / net8.0 / DOTNET_TUT.Frontend.AssemblyInfo.cs
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e19ecee29db1475c7e6821ba34daea9be1a99023")]
 [assembly: System.Reflection.AssemblyProductAttribute("StockViewer.Frontend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StockViewer.Frontend")]

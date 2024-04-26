@@ -5,10 +5,18 @@ using StockViewer.Api.Entities;
 
 namespace StockViewer.Api.Endpoints;
 
+/// <summary>
+/// Provides endpoints for managing users.
+/// </summary>
 public static class UsersEndpoints
 {
 
     const string GetUserEndpointName = "GetUser";
+    /// <summary>
+    /// Maps endpoints related to users.
+    /// </summary>
+    /// <param name="app">The web application instance.</param>
+    /// <returns>A route group builder for users endpoints.</returns>
     public static RouteGroupBuilder MapUsersEndpoints(this WebApplication app)
     {
         var group = app.MapGroup("users").WithParameterValidation();
@@ -43,7 +51,7 @@ public static class UsersEndpoints
             dbContext.Add(user);
             await dbContext.SaveChangesAsync();
 
-            return Results.CreatedAtRoute(GetUserEndpointName, new {id = user.Id}, user.ToUserSummaryDto());
+            return Results.CreatedAtRoute(GetUserEndpointName, new { id = user.Id }, user.ToUserSummaryDto());
         });
 
         // PUT /users/{id}
@@ -51,7 +59,7 @@ public static class UsersEndpoints
         {
             var existingUser = await dbContext.Users.FindAsync(id);
 
-            if(existingUser is null)
+            if (existingUser is null)
             {
                 return Results.NotFound();
             }
@@ -75,8 +83,8 @@ public static class UsersEndpoints
 
         return group;
 
-        
+
     }
 
-    
+
 }
