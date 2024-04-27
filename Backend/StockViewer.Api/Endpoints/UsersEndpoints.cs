@@ -31,11 +31,11 @@ public static class UsersEndpoints
         );
 
         //GET /users/{id}
-        group.MapGet("/{id}", async (int id, StockViewerContext dbContext) =>
+        group.MapGet("/{UserLogin}", async (string UserLogin, StockViewerContext dbContext) =>
         {
             User? user = await dbContext.Users
                                             .Include(user => user.Stocks)
-                                            .Where(user => user.Id == id)
+                                            .Where(user => user.Login == UserLogin)
                                             .AsNoTracking()
                                             .FirstOrDefaultAsync();
 
