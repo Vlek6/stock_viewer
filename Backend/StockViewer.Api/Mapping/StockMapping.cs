@@ -18,7 +18,7 @@ public static class StockMapping
     {
         return new Stock()
         {
-            StockName = stock.StockName,
+            StockSymbol = stock.StockSymbol,
             UserId = stock.UserId,
         };
     }
@@ -32,7 +32,7 @@ public static class StockMapping
     {
         return new(
             stock.Id,
-            stock.StockName
+            stock.StockSymbol
         );
     }
 
@@ -47,7 +47,7 @@ public static class StockMapping
         return new Stock()
         {
             Id = id,
-            StockName = stock.StockName
+            StockSymbol = stock.StockSymbol
         };
     }
 }

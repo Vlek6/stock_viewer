@@ -6,5 +6,5 @@
 public record class StockSummaryDto
 (
     int Id,
-    string StockName
+    string StockSymbol
 );

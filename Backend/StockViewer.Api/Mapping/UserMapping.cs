@@ -29,7 +29,7 @@ public static class UserMapping
     /// <returns>The corresponding <see cref="UserSummaryDto"/>.</returns>
     public static UserSummaryDto ToUserSummaryDto(this User user)
     {
-        var stocks = user.Stocks.Select(s => new StockSummaryDto(s.Id, s.StockName)).ToList();
+        var stocks = user.Stocks.Select(s => new StockSummaryDto(s.Id, s.StockSymbol)).ToList();
         return new(
             user.Id,
             user.Login,

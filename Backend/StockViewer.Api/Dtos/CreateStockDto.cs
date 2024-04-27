@@ -5,6 +5,6 @@
 /// </summary>
 public record class CreateStockDto
 (
-    string StockName,
+    string StockSymbol,
     int UserId
 );

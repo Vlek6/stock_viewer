@@ -5,5 +5,5 @@
 /// </summary>
 public record class UpdateStockDto
 (
-    string StockName
+    string StockSymbol
 );
