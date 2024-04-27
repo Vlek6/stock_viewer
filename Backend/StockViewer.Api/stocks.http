@@ -8,8 +8,8 @@ POST http://localhost:5085/stocks
 Content-Type: application/json
 
 {
-    "stockName": "MSFC",
-    "userid": 2
+    "stockSymbol": "MSFC",
+    "userid": 1
 }
 
 ###
