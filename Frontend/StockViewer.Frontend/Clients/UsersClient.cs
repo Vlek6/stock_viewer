@@ -20,6 +20,12 @@ public class UsersClient(HttpClient httpClient)
         // if (user is not null)
         //     users.Add(user);
     }
+    public async Task<List<StockSummary>> GetFollowedStocksAsync(string user){
+        User? tmpUser =  await httpClient.GetFromJsonAsync<User>($"users/{user}");
+        if(tmpUser is not null) return tmpUser.FollowedStocks!;
+        else return new List<StockSummary>();
+
+    }
 
     private StockSummary? GetStockSummaryById(int id)
     {

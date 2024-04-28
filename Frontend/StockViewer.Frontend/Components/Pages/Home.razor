@@ -58,7 +58,7 @@
         <th>Operations</th>
     </thead>
     <tbody>
-        @foreach (var stock in UsersClient.currentUser!.GetFollowedStocks())
+        @foreach (var stock in FollowedStocks!)
                 {
                     <tr>
                         <td>@stock.Id</td>
@@ -183,6 +183,7 @@ async function fetchData() {
     [Parameter]
     public string? user { get; set; } = string.Empty;
     public User? loggedUser { get; set; }
+    public List<StockSummary>? FollowedStocks{get; set;}
 
     [SupplyParameterFromForm]
     private string? name { get; set; } = string.Empty;
@@ -195,6 +196,10 @@ async function fetchData() {
             Console.WriteLine(user);
             
             loggedUser = await UsersClient.GetUser(user);
+            FollowedStocks = await UsersClient.GetFollowedStocksAsync(user);
+            if(FollowedStocks is null){
+                FollowedStocks = new List<StockSummary>();
+            }
         }
     }
     private static string GameUrl(int Id) => $"/editGame/{Id}";
@@ -212,9 +217,9 @@ async function fetchData() {
     }
     private void handeSubmit()
     {
-        if (name is not null)
+        if (name != string.Empty)
         {
-            NavigationManager.NavigateTo(StockUrl(name, loggedUser));
+            NavigationManager.NavigateTo(StockUrl(name!, loggedUser));
         }
     }
     @* protected override void OnParametersSet()

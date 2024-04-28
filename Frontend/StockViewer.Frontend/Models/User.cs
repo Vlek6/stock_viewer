@@ -14,7 +14,7 @@ public class User
     [StringLength(20)]
     public string? Password {get; set;}
     // private decimal balance {get; set;}
-    private List<StockSummary>? FollowedStocks {get; set;}
+    public List<StockSummary>? FollowedStocks {get; set;}
     // private List<PurchasedStock> PurchasedStocks {get; set;}
 
 
