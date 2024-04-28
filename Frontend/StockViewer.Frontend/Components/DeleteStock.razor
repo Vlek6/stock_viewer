@@ -1,4 +1,4 @@
-@inject StockClient Client
+@inject UsersClient UsersClient
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
@@ -31,7 +31,9 @@
         title = $"Delete {Stock?.Name}";
     }
     private void Confirm(){
-        Client.DeleteStockById(Stock.Id);
+        UsersClient.DeleteStockById(Stock!.Id);
+        Console.WriteLine($"Stock to delete: {Stock.Name}");
+        Console.Write(UsersClient.currentUser!.GetFollowedStocks());
         NavigationManager.Refresh();
     }
 }

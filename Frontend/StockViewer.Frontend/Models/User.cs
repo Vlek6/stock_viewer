@@ -1,18 +1,20 @@
-﻿namespace StockViewer.Frontend.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StockViewer.Frontend.Models;
 
 public class User
 {
-    public User(){
-        Username = "";
-        Password = "";
-        FollowedStocks = new List<string>();
-        // PurchasedStocks = new List<PurchasedStock>();
-        // balance = 500;
-    }
+    public int UserId { get; set; }
+
+    [Required(ErrorMessage = "This field is required.")]
+    [StringLength(20)]
     public string? Username {get; set; }
+    
+    [Required(ErrorMessage = "This field is required.")]
+    [StringLength(20)]
     public string? Password {get; set;}
     // private decimal balance {get; set;}
-    private List<string> FollowedStocks {get; set;}
+    private List<StockSummary>? FollowedStocks {get; set;}
     // private List<PurchasedStock> PurchasedStocks {get; set;}
 
 
@@ -25,9 +27,7 @@ public class User
     // public void AddPurchasedStock(PurchasedStock Stock){
     //     PurchasedStocks.Add(Stock);
     // }
-    public void AddFollowedStock(string StockName){
-        FollowedStocks.Add(StockName);
-    }
+
     // public List<PurchasedStock> GetPurchasedStocks(){
     //     return PurchasedStocks;
     // }
@@ -35,7 +35,7 @@ public class User
         return Username;
     }
 
-    public List<string> GetFollowedStocks(){
+    public List<StockSummary> GetFollowedStocks(){
         return FollowedStocks;
     }
     public bool comparePassoword(string? passwrd){

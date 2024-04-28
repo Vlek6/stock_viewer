@@ -1,7 +1,10 @@
 ﻿@page "/chart"
 @page "/chart/{symbol}"
+@page "/{user}/chart/{symbol}"
+
 @using System.Text.Json.Serialization
 @inject StockClient StockClient
+@inject UsersClient UsersClient
 @rendermode InteractiveServer
 
 <PageTitle>Stock Chart</PageTitle>
@@ -19,17 +22,26 @@ else
         OrderByDescending="e=> e.X" Stroke="@(new SeriesStroke{ Width=1 })" />
 
 
-</ApexChart>
+    </ApexChart>
+    @if(user is not null){
+        <div>Hello @UsersClient.currentUser!.GetUsername()</div>
+        <button class="btn btn-primary" @onclick="handleAddStock">Follow Stock! </button>
+    }
 }
 
 @code {
     [Parameter]
     public string? symbol {get; set;}
+    [Parameter]
+    public string? user {get; set;}
     List<StockChartData>? stockData;
     StockStringDate item = new();
     StockData? rawData { get; set; }
     protected override async Task OnInitializedAsync()
     {
+        if(user is not null){
+            UsersClient.currentUser = await UsersClient.GetUser(user);
+            }
         StockClient.symbol = symbol;
         stockData = new List<StockChartData>();
         rawData = await StockClient.GetStockDataAsync();
@@ -50,6 +62,14 @@ else
             }
 
         }
+    }
+    public void handleAddStock(){
+        StockSummary stock = new StockSummary{
+            Id=0,
+            Symbol = rawData!.symbol!,
+            Name = ""
+        };
+        UsersClient.AddStockAsync(UsersClient.currentUser!, stock);
     }
     class StockStringDate
     {

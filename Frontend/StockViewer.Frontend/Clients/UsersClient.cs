@@ -1,21 +1,66 @@
-﻿using StockViewer.Frontend.Models;
+﻿using Newtonsoft.Json;
+using StockViewer.Frontend.Models;
 namespace StockViewer.Frontend.Clients;
 
 public class UsersClient(HttpClient httpClient)
 {
-    private readonly List<User> users= new List<User>();
-    public User currentUser { get; set; }
-    public void AddUser(User user){
-        users.Add(user);
+    public User? currentUser { get; set; }
+    private List<StockSummary>? stocks { get; set; }
+    public async Task<User?> GetUser(string username) 
+        => await httpClient.GetFromJsonAsync<User>($"users/{username}");
+    public async Task AddUserAsync(string username, string password)
+    {
+        NewUser newUser = new NewUser()
+        {
+            Login = username,
+            Password = password
+        };
+        await httpClient.PostAsJsonAsync<NewUser>("users/", newUser);
+        // User? user = JsonConvert.DeserializeObject<User>(await response.Content.ReadAsStringAsync());
+        // if (user is not null)
+        //     users.Add(user);
     }
 
-    // TODO: User credentials check implementation
-    public bool CheckUser(User user){
-        // coś jak SELECT usr FROM users WHERE usr.username == user.username
-        // return user.comparePassoword(usr.password);
-        if(users is not null) // póki co nigdy nie będzie null
-        return true;
-        else
+    private StockSummary? GetStockSummaryById(int id)
+    {
+        if (currentUser is not null)
+        {
+            StockSummary? stock = currentUser.GetFollowedStocks().Find(stock => stock.Id == id);
+            ArgumentNullException.ThrowIfNull(stock);
+            return stock;
+        }
+        return null;
+    }
+
+    public void DeleteStockById(int id)
+    {
+        // var stock = GetStockSummaryById(id);
+        // if (stock != null && currentUser is not null)
+        // {
+        //     currentUser.RemoveFollowedStock(stock);
+
+        // }
+    }
+
+    public async void AddStockAsync(User user, StockSummary stock)
+    {
+        UserStock userstock = new UserStock(){
+            userid = user.UserId,
+            stockName = stock.Symbol
+        };
+        await httpClient.PostAsJsonAsync<UserStock>("stocks", userstock);
+    }
+    private async Task<User?> GetUserAsync(string username)
+        => await httpClient.GetFromJsonAsync<User>($"users/{username}");
+
+    public async Task<bool> CheckUserAsync(User user)
+    {
+        User? DBuser = await GetUserAsync(user.Username!);
+        if (DBuser is not null)
+        {
+            if (user.Password == DBuser.Password) return true;
+            else return false;
+        }
         return false;
     }
 }
