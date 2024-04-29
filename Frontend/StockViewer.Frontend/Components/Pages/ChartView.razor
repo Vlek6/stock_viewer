@@ -8,7 +8,7 @@
 @rendermode InteractiveServer
 
 <PageTitle>Stock Chart</PageTitle>
-@if (stockData!.Count() == 0)
+@if (stockData is null)
 {
     <p><em> LOADING... </em></p>
 }
@@ -24,7 +24,7 @@ else
 
     </ApexChart>
     @if(user is not null){
-        <div>Hello @UsersClient.CurrentUser!.GetUsername()</div>
+        <div>Hello @UsersClient.CurrentUser!.GetLogin()</div>
         <button class="btn btn-primary" @onclick="handleAddStockAsync">Follow Stock! </button>
     }
 }
@@ -44,7 +44,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         if(user is not null){
-            UsersClient.CurrentUser = await UsersClient.GetUser(user);
+            UsersClient.CurrentUser = await UsersClient.GetUserAsync(user);
             }
         StockClient.Symbol = symbol;
         stockData = new List<StockChartData>();
@@ -74,8 +74,7 @@ else
     public async Task handleAddStockAsync(){
         StockSummary stock = new StockSummary{
             Id=0,
-            Symbol = rawData!.symbol!,
-            Name = ""
+            StockSymbol = rawData!.symbol!,
         };
         await UsersClient.AddStockAsync(UsersClient.CurrentUser!, stock);
     }

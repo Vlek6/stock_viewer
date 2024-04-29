@@ -2,7 +2,7 @@
 
 public class UserStock
 {
-    public string? stockName { get; set; }
+    public string? stockSymbol { get; set; }
     public int userid { get; set; }
 
 }

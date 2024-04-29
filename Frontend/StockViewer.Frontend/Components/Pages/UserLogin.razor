@@ -21,9 +21,9 @@ else
             <ValidationSummary />
             <div class="mb-3">
                 <label for="Name" class="form-label">User name (login):</label>
-                <InputText id="Name" placeholder="Type username here" @bind-Value="user.Username"
+                <InputText id="Name" placeholder="Type Login here" @bind-Value="user.Login"
                     class="form-control" />
-                <ValidationMessage For="()=>user.Username" />
+                <ValidationMessage For="()=>user.Login" />
             </div>
             <div class="mb-3">
                 <label for="Passoword" class="form-label">Passoword:</label>
@@ -50,7 +50,7 @@ else
     private async Task handleSubmitAsync()
     {
         if(user is  not null && await UsersClient.CheckUserAsync(user)){
-            NavigationManager.NavigateTo($"/{user.Username}");
+            NavigationManager.NavigateTo($"/{user.Login}");
         }
         else {
             NavigationManager.NavigateTo("/login");

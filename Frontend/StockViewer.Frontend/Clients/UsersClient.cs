@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using StockViewer.Frontend.Models;
+﻿using StockViewer.Frontend.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace StockViewer.Frontend.Clients
 {
@@ -36,23 +36,35 @@ namespace StockViewer.Frontend.Clients
         /// <summary>
         /// Retrieves user data asynchronously.
         /// </summary>
-        /// <param name="username">The username of the user to retrieve.</param>
+        /// <param name="Login">The Login of the user to retrieve.</param>
         /// <returns>A <see cref="Task{TResult}"/> representing the asynchronous operation. The task result contains the retrieved user data.</returns>
-        public async Task<User?> GetUser(string username)
-        {
-            return await _httpClient.GetFromJsonAsync<User>($"users/{username}");
+        public async Task<User?> GetUserAsync(string Login){
+            User? user = await _httpClient.GetFromJsonAsync<User>($"users/{Login}");  
+            return user;
         }
+
+        public async Task<User?> GetUserAsync2(string user){
+            User? dbUser = await GetUserAsync(user);
+            return dbUser;
+        }
+        // {
+        //     User? response 
+        //     // Console.WriteLine("GetUserAsync()");
+        //     // Console.WriteLine(response.Login);
+        //     // if(response == null) return null;
+        //     // else return response;
+        // }     
 
         /// <summary>
         /// Adds a new user asynchronously.
         /// </summary>
-        /// <param name="username">The username of the new user.</param>
+        /// <param name="Login">The Login of the new user.</param>
         /// <param name="password">The password of the new user.</param>
-        public async Task AddUserAsync(string username, string password)
+        public async Task AddUserAsync(string Login, string password)
         {
             NewUser newUser = new NewUser()
             {
-                Login = username,
+                Login = Login,
                 Password = password
             };
             await _httpClient.PostAsJsonAsync<NewUser>("users/", newUser);
@@ -61,21 +73,24 @@ namespace StockViewer.Frontend.Clients
         /// <summary>
         /// Retrieves the list of followed stocks for a user asynchronously.
         /// </summary>
-        /// <param name="user">The username of the user.</param>
+        /// <param name="user">The Login of the user.</param>
         /// <returns>A <see cref="Task{TResult}"/> representing the asynchronous operation. The task result contains the list of followed stocks.</returns>
-        public async Task<List<StockSummary>> GetFollowedStocksAsync(string user)
+        public async Task<List<StockSummary>?> GetFollowedStocksAsync(string user)
         {
-            User? tmpUser = await GetUser(user);
-            return tmpUser?.FollowedStocks ?? new List<StockSummary>();
+            User? tmpUser = await GetUserAsync(user);
+            if(tmpUser is not null){
+                return tmpUser.Stocks;
+            }
+            else return null;
         }
 
         /// <summary>
         /// Deletes a stock by its ID.
         /// </summary>
         /// <param name="id">The ID of the stock to delete.</param>
-        public void DeleteStockById(int id)
+        public async Task DeleteStockByIdAsync(int id)
         {
-            // Implementation
+            await _httpClient.DeleteAsync($"stocks/{id}");
         }
 
         /// <summary>
@@ -87,8 +102,8 @@ namespace StockViewer.Frontend.Clients
         {
             UserStock userstock = new UserStock()
             {
-                userid = user.UserId,
-                stockName = stock.Symbol
+                userid = user.Id,
+                stockSymbol = stock.StockSymbol
             };
             await _httpClient.PostAsJsonAsync<UserStock>("stocks", userstock);
         }
@@ -96,12 +111,12 @@ namespace StockViewer.Frontend.Clients
         /// <summary>
         /// Retrieves a user asynchronously.
         /// </summary>
-        /// <param name="username">The username of the user to retrieve.</param>
+        /// <param name="Login">The Login of the user to retrieve.</param>
         /// <returns>A <see cref="Task{TResult}"/> representing the asynchronous operation. The task result contains the retrieved user.</returns>
-        private async Task<User?> GetUserAsync(string username)
-        {
-            return await _httpClient.GetFromJsonAsync<User>($"users/{username}");
-        }
+        // private async Task<User?> GetUserAsync(string Login)
+        // {
+        //     return await _httpClient.GetFromJsonAsync<User>($"users/{Login}");
+        // }
 
         /// <summary>
         /// Checks if the provided user exists and if the password matches.
@@ -110,7 +125,7 @@ namespace StockViewer.Frontend.Clients
         /// <returns><c>true</c> if the user exists and the password matches; otherwise, <c>false</c>.</returns>
         public async Task<bool> CheckUserAsync(User user)
         {
-            User? dbUser = await GetUserAsync(user.Username!);
+            User? dbUser = await GetUserAsync(user.Login!);
             return dbUser != null && user.Password == dbUser.Password;
         }
 
