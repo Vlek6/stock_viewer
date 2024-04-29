@@ -20,20 +20,34 @@
 
 @code {
     [Parameter]
-    public StockSummary? Stock {get; set;}
+    public StockSummary? Stock { get; set; }
     private string? title = string.Empty;
-    public static string GetModalId(StockSummary? stock){
+
+    /// <summary>
+    /// Generates the modal ID for deleting a stock.
+    /// </summary>
+    /// <param name="stock">The stock to delete.</param>
+    /// <returns>The modal ID for the delete confirmation modal.</returns>
+    public static string GetModalId(StockSummary? stock)
+    {
         ArgumentNullException.ThrowIfNull(stock);
         return $"deleteModal-{stock.Id}";
     } 
 
-    protected override void  OnParametersSet(){
+    /// <summary>
+    /// Method called when the component's parameters are set.
+    /// </summary>
+    protected override void OnParametersSet()
+    {
         title = $"Delete {Stock?.Name}";
     }
-    private void Confirm(){
+
+    /// <summary>
+    /// Confirms the deletion of the stock.
+    /// </summary>
+    private void Confirm()
+    {
         UsersClient.DeleteStockById(Stock!.Id);
-        Console.WriteLine($"Stock to delete: {Stock.Name}");
-        Console.Write(UsersClient.currentUser!.GetFollowedStocks());
         NavigationManager.Refresh();
     }
 }

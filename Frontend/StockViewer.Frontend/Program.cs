@@ -12,12 +12,6 @@ var ApiKey = builder.Configuration["APIkey"];
 var userApiUrl = builder.Configuration["userApiUrl"]??
     throw new Exception ("userApiUrl is not set");
 
-// builder.Services.AddHttpClient<GamesClient>(client);
-// builder.Services.AddHttpClient<GenresClient>(client => {
-//         client.BaseAddress = new Uri(stockApiUrl); 
-//         client.DefaultRequestHeaders.Add("api-key", ApiKey);
-//         }
-//     );
 builder.Services.AddHttpClient<StockClient>(client => {
         client.BaseAddress = new Uri(stockApiUrl); 
         client.DefaultRequestHeaders.Add("api-key", ApiKey);
@@ -26,8 +20,6 @@ builder.Services.AddHttpClient<StockClient>(client => {
 builder.Services.AddHttpClient<UsersClient>(client => {
         client.BaseAddress = new Uri(userApiUrl); 
         });
-builder.Services.AddSingleton<GamesClient>();
-
 
 var app = builder.Build();
 

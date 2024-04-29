@@ -42,15 +42,24 @@ else
 @code {
     [SupplyParameterFromForm]
     private User? user { get; set; }
+
+    /// <summary>
+    /// Handles the form submission asynchronously.
+    /// </summary>
     private async Task handleSubmitAsync()
     {
         if(user is  not null){
-        await UsersClient.AddUserAsync(user.Username!, user.Password!);
-        NavigationManager.NavigateTo("/");
+            await UsersClient.AddUserAsync(user.Username!, user.Password!);
+            NavigationManager.NavigateTo("/");
         }
-        else
-        NavigationManager.NavigateTo("/register");
+        else {
+            NavigationManager.NavigateTo("/register");
+        }
     }
+
+    /// <summary>
+    /// Method called when the component's parameters are set.
+    /// </summary>
     protected override void OnParametersSet()
     {
         user = new();

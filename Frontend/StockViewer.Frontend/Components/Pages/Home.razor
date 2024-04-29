@@ -67,7 +67,7 @@
                         <td>
                             <div class="d-flex">
                                 <a class="btn btn-primary me-2" role="button"
-                                    href="@StockUrl(stock.Symbol, UsersClient.currentUser)">
+                                    href="@StockUrl(stock.Symbol, UsersClient.CurrentUser)">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="@GetDeleteModalId(stock)">
@@ -93,117 +93,128 @@
 }
 <script>
     let cachedData = null;
-async function fetchData() {
-    try {
-        // Check if data is already cached
-        if (cachedData) {
-            console.log("Using cached data");
-            return cachedData;
-        }
-        
-        // Make HTTP request to the endpoint
-            const response = await fetch('https://financialmodelingprep.com/api/v3/symbol/NASDAQ?apikey=3f68492f1d880e0d76e689edd0bc672c');
-        
-        // Check if the request was successful
-        if (!response.ok) {
-            throw new Error('Failed to fetch data');
-        }
-        
-        // Parse the response JSON
-        const data = await response.json();
-        
-        // Store the data in the cache variable
-        cachedData = data;
-        
-        return data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        throw error;
-    }
-}
-
-// Call fetchData function on script initialization
-(async () => {
-    try {
-        await fetchData();
-        console.log('Data fetched and cached successfully');
-    } catch (error) {
-        console.error('Error:', error);
-    }
-})();
-        // Function to handle input change
-        function handleInputChange() {
-            const inputText = document.getElementById('ExSymbolInput').value.trim().toLowerCase();
-
-            if (inputText.length === 0) {
-                hideSuggestions(); // Hide suggestions if input is empty
-                return;
+    async function fetchData() {
+        try {
+            // Check if data is already cached
+            if (cachedData) {
+                console.log("Using cached data");
+                return cachedData;
             }
-                // Filter data based on the current input text
-                const filteredData = cachedData.filter(item => {
-                    // Ensure item.name and item.symbol are not null or undefined before lowercasing
-                    const nameMatches = (item.name && item.name.toLowerCase().includes(inputText)) || false;
-                    const symbolMatches = (item.symbol && item.symbol.toLowerCase().includes(inputText)) || false;
-                    return nameMatches || symbolMatches;
-                });
 
-                displaySuggestions(filteredData);
+            // Make HTTP request to the endpoint
+            const response = await fetch('https://financialmodelingprep.com/api/v3/symbol/NASDAQ?apikey=3f68492f1d880e0d76e689edd0bc672c');
+
+            // Check if the request was successful
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+
+            // Parse the response JSON
+            const data = await response.json();
+
+            // Store the data in the cache variable
+            cachedData = data;
+
+            return data;
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            throw error;
         }
+    }
 
-        // Function to display filtered suggestions
-        function displaySuggestions(suggestions) {
-            const suggestionList = document.getElementById('suggestionList');
-            suggestionList.innerHTML = ''; // Clear previous suggestions
-
-            // Display new suggestions
-            suggestions.forEach(suggestion => {
-                const listItem = document.createElement('li');
-                listItem.textContent = `${suggestion.name} (${suggestion.symbol})`;
-                listItem.onclick = () => {
-                    // Set selected suggestion as input value
-                    document.getElementById('ExSymbolInput').value = suggestion.symbol;
-                    hideSuggestions();
-                };
-                suggestionList.appendChild(listItem);
-            });
-
-            // Show the suggestion dropdown
-            document.getElementById('searchSuggestions').style.display = 'block';
+    // Call fetchData function on script initialization
+    (async () => {
+        try {
+            await fetchData();
+            console.log('Data fetched and cached successfully');
+        } catch (error) {
+            console.error('Error:', error);
         }
-        // Function to hide the suggestion dropdown
-        function hideSuggestions() {
-            document.getElementById('searchSuggestions').style.display = 'none';
+    })();
+    // Function to handle input change
+    function handleInputChange() {
+        const inputText = document.getElementById('ExSymbolInput').value.trim().toLowerCase();
+
+        if (inputText.length === 0) {
+            hideSuggestions(); // Hide suggestions if input is empty
+            return;
         }
+        // Filter data based on the current input text
+        const filteredData = cachedData.filter(item => {
+            // Ensure item.name and item.symbol are not null or undefined before lowercasing
+            const nameMatches = (item.name && item.name.toLowerCase().includes(inputText)) || false;
+            const symbolMatches = (item.symbol && item.symbol.toLowerCase().includes(inputText)) || false;
+            return nameMatches || symbolMatches;
+        });
 
-        // Attach input event listener to the search input field
-        document.getElementById('ExSymbolInput').addEventListener('input', handleInputChange);
+        displaySuggestions(filteredData);
+    }
 
-    </script>
+    // Function to display filtered suggestions
+    function displaySuggestions(suggestions) {
+        const suggestionList = document.getElementById('suggestionList');
+        suggestionList.innerHTML = ''; // Clear previous suggestions
+
+        // Display new suggestions
+        suggestions.forEach(suggestion => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${suggestion.name} (${suggestion.symbol})`;
+            listItem.onclick = () => {
+                // Set selected suggestion as input value
+                document.getElementById('ExSymbolInput').value = suggestion.symbol;
+                hideSuggestions();
+            };
+            suggestionList.appendChild(listItem);
+        });
+
+        // Show the suggestion dropdown
+        document.getElementById('searchSuggestions').style.display = 'block';
+    }
+    // Function to hide the suggestion dropdown
+    function hideSuggestions() {
+        document.getElementById('searchSuggestions').style.display = 'none';
+    }
+
+    // Attach input event listener to the search input field
+    document.getElementById('ExSymbolInput').addEventListener('input', handleInputChange);
+
+</script>
 @code {
     [Parameter]
     public string? user { get; set; } = string.Empty;
     public User? loggedUser { get; set; }
-    public List<StockSummary>? FollowedStocks{get; set;}
+    public List<StockSummary>? FollowedStocks { get; set; }
 
     [SupplyParameterFromForm]
     private string? name { get; set; } = string.Empty;
     @* private GameSummary[]? games; *@
 
+    /// <summary>
+    /// Method called when the component is initialized.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        if (user is not null){
+        if (user is not null)
+        {
             Console.WriteLine("Bedzie tu");
             Console.WriteLine(user);
-            
+
             loggedUser = await UsersClient.GetUser(user);
             FollowedStocks = await UsersClient.GetFollowedStocksAsync(user);
-            if(FollowedStocks is null){
+            if (FollowedStocks is null)
+            {
                 FollowedStocks = new List<StockSummary>();
             }
         }
     }
     private static string GameUrl(int Id) => $"/editGame/{Id}";
 
+    /// <summary>
+    /// Generates the URL for a stock chart.
+    /// </summary>
+    /// <param name="symbol">The symbol of the stock.</param>
+    /// <param name="user">The current user.</param>
+    /// <returns>The URL for the stock chart.</returns>
     public string StockUrl(string symbol, User? user)
     {
         if (user is not null)
@@ -215,6 +226,9 @@ async function fetchData() {
             return $"/chart/{symbol}";
         }
     }
+    /// <summary>
+    /// Handles the form submission for stock search.
+    /// </summary>
     private void handeSubmit()
     {
         if (name != string.Empty)
@@ -227,6 +241,11 @@ async function fetchData() {
 name = new();
 } *@
 
+    /// <summary>
+    /// Gets the modal ID for deleting a stock.
+    /// </summary>
+    /// <param name="stock">The stock to delete.</param>
+    /// <returns>The modal ID for the delete confirmation modal.</returns>
     private string GetDeleteModalId(StockSummary stock)
     {
         return $"#{DeleteStock.GetModalId(stock)}";

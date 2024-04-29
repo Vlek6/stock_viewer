@@ -24,8 +24,8 @@ else
 
     </ApexChart>
     @if(user is not null){
-        <div>Hello @UsersClient.currentUser!.GetUsername()</div>
-        <button class="btn btn-primary" @onclick="handleAddStock">Follow Stock! </button>
+        <div>Hello @UsersClient.CurrentUser!.GetUsername()</div>
+        <button class="btn btn-primary" @onclick="handleAddStockAsync">Follow Stock! </button>
     }
 }
 
@@ -37,12 +37,16 @@ else
     List<StockChartData>? stockData;
     StockStringDate item = new();
     StockData? rawData { get; set; }
+
+    /// <summary>
+    /// Method called when the component is initialized.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         if(user is not null){
-            UsersClient.currentUser = await UsersClient.GetUser(user);
+            UsersClient.CurrentUser = await UsersClient.GetUser(user);
             }
-        StockClient.symbol = symbol;
+        StockClient.Symbol = symbol;
         stockData = new List<StockChartData>();
         rawData = await StockClient.GetStockDataAsync();
         if (rawData.historical is not null && rawData.historical.Count() > 0)
@@ -63,14 +67,22 @@ else
 
         }
     }
-    public void handleAddStock(){
+
+    /// <summary>
+    /// Handles the asynchronous task of adding a stock.
+    /// </summary>
+    public async Task handleAddStockAsync(){
         StockSummary stock = new StockSummary{
             Id=0,
             Symbol = rawData!.symbol!,
             Name = ""
         };
-        UsersClient.AddStockAsync(UsersClient.currentUser!, stock);
+        await UsersClient.AddStockAsync(UsersClient.CurrentUser!, stock);
     }
+
+    /// <summary>
+    /// Represents the structure of stock data with string date.
+    /// </summary>
     class StockStringDate
     {
         public string? date { get; set; }
