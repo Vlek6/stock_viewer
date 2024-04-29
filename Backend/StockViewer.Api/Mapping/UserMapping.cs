@@ -33,6 +33,7 @@ public static class UserMapping
         return new(
             user.Id,
             user.Login,
+            user.Password,
             stocks
         );
     }

@@ -7,5 +7,6 @@ public record class UserSummaryDto
 (
     int Id,
     string Login,
+    string Password,
     List<StockSummaryDto> Stocks
 );
