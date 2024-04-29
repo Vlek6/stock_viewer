@@ -20,3 +20,6 @@ Content-Type: application/json
     "stockName": "GOOG",
     "userid": 1
 }
+
+###
+DELETE http://localhost:5085/stocks/1

@@ -67,6 +67,15 @@ public static class StocksEndpoints
         }
         );
 
+        // DELETE stocks/{id}
+        group.MapDelete("/{id}", async (int id, StockViewerContext dbContext) =>
+            {
+                await dbContext.Stocks
+                                .Where(stock => stock.Id == id)
+                                .ExecuteDeleteAsync();
+                return Results.NoContent();
+            }
+        );
         return group;
     }
 }
