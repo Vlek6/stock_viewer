@@ -11,3 +11,4 @@ Backend/StockViewer.Api/obj
 docs
 /Backend/StockViewer.Api/SVDataBase.db-shm
 /Backend/StockViewer.Api/SVDataBase.db-wal
+docs/
