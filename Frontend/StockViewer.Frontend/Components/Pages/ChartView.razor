@@ -5,6 +5,7 @@
 @using System.Text.Json.Serialization
 @inject StockClient StockClient
 @inject UsersClient UsersClient
+@inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
 <PageTitle>Stock Chart</PageTitle>
@@ -21,7 +22,9 @@
     @if(user is not null){
         <div>Hello @UsersClient.CurrentUser!.GetLogin()</div>
         <button class="btn btn-primary" @onclick="handleAddStockAsync">Follow Stock! </button>
+        <button class="btn btn-secondary" @onclick="handleHome">Back to home </button>
     }
+        <button class="btn btn-secondary" @onclick="handleHome ">Back to home </button>
 }
 else
 {
@@ -40,6 +43,14 @@ else
     /// <summary>
     /// Method called when the component is initialized.
     /// </summary>
+    public void handleHome()
+    {
+        if(user is not null)
+         NavigationManager.NavigateTo($"/{user}");
+         else{
+            NavigationManager.NavigateTo("/");
+         }
+         }
     protected override async Task OnInitializedAsync()
     {
         if(user is not null){
