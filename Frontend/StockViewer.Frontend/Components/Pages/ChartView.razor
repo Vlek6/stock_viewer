@@ -8,13 +8,8 @@
 @rendermode InteractiveServer
 
 <PageTitle>Stock Chart</PageTitle>
-@if (stockData is null)
+@if (stockData is not null && rawData is not null)
 {
-    <p><em> LOADING... </em></p>
-}
-else
-{
-
     <ApexChart TItem="StockChartData" XAxisType="XAxisType.Datetime" Title="@rawData!.symbol" Height="500" Width="1000">
 
     <ApexCandleSeries TItem="StockChartData" Items="stockData" Name="Apex Stock Price" XValue="@(e => e.date)"
@@ -27,6 +22,10 @@ else
         <div>Hello @UsersClient.CurrentUser!.GetLogin()</div>
         <button class="btn btn-primary" @onclick="handleAddStockAsync">Follow Stock! </button>
     }
+}
+else
+{
+    <p><em> LOADING... </em></p>
 }
 
 @code {

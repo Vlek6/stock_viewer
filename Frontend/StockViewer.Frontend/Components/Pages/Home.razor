@@ -196,6 +196,7 @@
     {
         if (user is not null)
         {
+            Console.WriteLine($"user in home: {user}");
             User? LU = await UsersClient.GetUserAsync2(user);
             loggedUser = LU;
             if(loggedUser is not null){
@@ -227,9 +228,9 @@
     /// </summary>
     private void handeSubmit()
     {
-        if (name != string.Empty && loggedUser is not null)
+        Console.WriteLine($"On submit name: {name}");
+        if (name != string.Empty)
         {
-
             NavigationManager.NavigateTo(StockUrl(name!, loggedUser));
         }
     }
