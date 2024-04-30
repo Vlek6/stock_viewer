@@ -65,3 +65,15 @@ chmod +x start.sh
 These scripts will start:
 - The backend API on [http://localhost:5085](http://localhost:5085)
 - The frontend Blazor app on [http://localhost:5220](http://localhost:5220)
+
+## Running automatic documentation
+
+The project includes pre-configured scripts that start doxygen for automatic documentation of both frontend and backend part
+
+### Using Pre-configured Scripts
+
+**For Windows Users:**
+Execute the batch file by double-clicking on `run_doc.bat` or through the command line:
+```bash
+run_doc.bat
+```
